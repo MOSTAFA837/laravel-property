@@ -3607,20 +3607,24 @@ div.tox .tox-button--secondary {
 
 .btn-outline-primary,
 .fc .fc-button-primary {
-    --bs-btn-color: #6571ff;
-    --bs-btn-border-color: #6571ff;
+    --bs-btn-color: #3f51b5;
+    --bs-btn-border-color: #3f51b5;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #6571ff;
-    --bs-btn-hover-border-color: #6571ff;
+    --bs-btn-hover-bg: #3f51b5;
+    --bs-btn-hover-border-color: #3f51b5;
     --bs-btn-focus-shadow-rgb: 101, 113, 255;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #6571ff;
-    --bs-btn-active-border-color: #6571ff;
+    --bs-btn-active-bg: #3f51b5;
+    --bs-btn-active-border-color: #3f51b5;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #6571ff;
+    --bs-btn-disabled-color: #3f51b5;
     --bs-btn-disabled-bg: transparent;
-    --bs-btn-disabled-border-color: #6571ff;
+    --bs-btn-disabled-border-color: #3f51b5;
     --bs-gradient: none;
+}
+
+.login-btn {
+    width: 100%;
 }
 
 .btn-outline-secondary {
@@ -19767,10 +19771,16 @@ select,
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px #fff inset;
     -webkit-text-fill-color: #000;
+    border: 1px solid #bbbbbb;
+}
+
+input:-webkit-autofill:focus {
+    border: 1px solid #3f51b5;
+    -webkit-box-shadow: 0 0 7px 1px #3f51b570;
+    box-shadow: 0 0 7px 1px #3f51b570;
 }
 
 *:-moz-full-screen,

@@ -31,10 +31,10 @@
                                 <span>Profile</span>
                             </li>
                         </a>
-                        <a href="javascript:;" class="text-body ms-0">
+                        <a href="{{ route('admin.change.password') }}" class="text-body ms-0">
                             <li class="dropdown-item py-2">
                                 <i class="me-2 icon-md" data-feather="repeat"></i>
-                                <span>Switch User</span>
+                                <span>Change Password</span>
                             </li>
                         </a>
                         <a href="{{ route('admin.logout') }}" class="text-body ms-0">

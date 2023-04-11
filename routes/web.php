@@ -5,7 +5,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\UserController;
 
+use App\Http\Controllers\Backend\PropertyTypeController;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\RedirectIfAuthenticated;
 
 // User Frontend Routes
 Route::get('/', [UserController::class, 'Index']);
@@ -29,7 +32,9 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 // Admin Routes
-Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])
+    ->name('admin.login')
+    ->middleware(RedirectIfAuthenticated::class);
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
@@ -40,6 +45,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/admin/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('admin.update.password');
+
+    // Property Types
+    Route::controller(PropertyTypeController::class)->group(function () {
+        Route::get('/all/type', 'view')->name('all.type');
+        Route::get('/add/type', 'add')->name('add.type');
+        Route::post('/store/type', 'store')->name('store.type');
+        Route::get('/edit/type/{id}', 'edit')->name('edit.type');
+        Route::post('/update/type/{id}', 'update')->name('update.type');
+        Route::get('/delete/type/{id}', 'delete')->name('delete.type');
+    });
 });
 
 // Agent Routes

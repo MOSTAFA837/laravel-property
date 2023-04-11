@@ -47,6 +47,7 @@
     <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}" />
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
 </head>
 
 <body>
@@ -72,8 +73,11 @@
         </div>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <!-- core:js -->
     <script src="{{ asset('backend/assets/vendors/core/core.js') }}"></script>
+
     <!-- endinject -->
 
     <!-- Plugin js for this page -->

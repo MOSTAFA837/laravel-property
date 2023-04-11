@@ -16,6 +16,7 @@ class AdminController extends Controller
 
     public function AdminLogin()
     {
+        // dd(Hash::make('123456'));
         return view('admin.login');
     }
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\Backend\AmenitieController;
+use App\Http\Controllers\Backend\PropertyController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -57,7 +58,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/delete/type/{id}', 'delete')->name('delete.type');
     });
 
-    // Amenitie Types
+    // Amenitie
     Route::controller(AmenitieController::class)->group(function () {
         Route::get('/all/amenitie', 'view')->name('all.amenitie');
         Route::get('/add/amenitie', 'add')->name('add.amenitie');
@@ -65,6 +66,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/amenitie/{id}', 'edit')->name('edit.amenitie');
         Route::post('/update/amenitie/{id}', 'update')->name('update.amenitie');
         Route::get('/delete/amenitie/{id}', 'delete')->name('delete.amenitie');
+    });
+
+    // Property
+    Route::controller(PropertyController::class)->group(function () {
+        Route::get('/all/property', 'view')->name('all.property');
+        Route::get('/add/property', 'add')->name('add.property');
+        Route::post('/store/property', 'store')->name('store.property');
+        Route::get('/edit/property/{id}', 'edit')->name('edit.property');
+        Route::post('/update/property/{id}', 'update')->name('update.property');
+        Route::get('/delete/property/{id}', 'delete')->name('delete.property');
     });
 });
 

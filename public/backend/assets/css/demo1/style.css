@@ -2336,7 +2336,7 @@ textarea.form-control-lg {
     background-repeat: no-repeat;
     background-position: right 0.8rem center;
     background-size: 16px 12px;
-    border: 1px solid #e9ecef;
+    border: 1px solid #3f51b56e;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     appearance: none;
@@ -2347,7 +2347,7 @@ textarea.form-control-lg {
     }
 }
 .form-select:focus {
-    border-color: #cbd1db;
+    border-color: #3f51b5;
     outline: 0;
     box-shadow: 0 0 0 0 rgba(101, 113, 255, 0.25);
 }
@@ -23268,7 +23268,7 @@ div.table-responsive
 
 .select2-container--default .select2-selection--single,
 .select2-container--default .select2-selection--multiple {
-    border: 1px solid #e9ecef;
+    border: 1px solid #cbd1db;
     border-radius: 0.25rem;
 }
 .select2-container--focus.select2-container--default .select2-selection--single,

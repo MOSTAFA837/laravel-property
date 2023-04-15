@@ -20,10 +20,6 @@
     <section class="sidebar-page-container blog-details sec-pad-2">
         <div class="auto-container">
             <div class="row clearfix">
-
-
-
-
                 @php
                     
                     $id = Auth::user()->id;

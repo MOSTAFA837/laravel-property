@@ -4,3 +4,22 @@
     padding: 10px;
     box-shadow: 2px 3px 20px 4px #00000026;
 }
+
+.thamb {
+    margin: 10px 5px;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+.select2-container--default .select2-selection--multiple {
+    border: 1px solid #acb4df !important;
+}
+
+.select2-container--focus.select2-container--default
+    .select2-selection--multiple {
+    border: 1px solid #3f51b5 !important;
+}
+
+.table td img {
+    border-radius: 10px !important;
+}

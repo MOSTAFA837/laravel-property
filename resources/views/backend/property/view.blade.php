@@ -35,7 +35,7 @@
                                                 <img src="{{ asset($item->property_thambnail) }}"
                                                     style="width: 70px; height:40px" alt="">
                                             </td>
-                                            <td>{{ $item->property_name }}</td>
+                                            <td>{{ Str::limit($item->property_name, 60, '...') }}</td>
                                             <td>{{ $item['type']['type_name'] }}</td>
                                             <td>{{ $item->property_status }}</td>
                                             <td>{{ $item->city }}</td>

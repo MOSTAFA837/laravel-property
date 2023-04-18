@@ -138,6 +138,7 @@ class PropertyController extends Controller
 
         $propertyTypes = PropertyType::latest()->get();
         $amenities = Amenitie::latest()->get();
+        $facilities = Facility::where('property_id', $id)->get();
         $activeAgents = User::where('status', 'active')
             ->where('role', 'agent')
             ->latest()
@@ -145,7 +146,7 @@ class PropertyController extends Controller
 
         $multiImages = MultiImg::where('property_id', $id)->get();
 
-        return view('backend.property.edit', compact('property', 'propertyTypes', 'amenities', 'activeAgents', 'explodedPropertyAmenities', 'multiImages'));
+        return view('backend.property.edit', compact('property', 'propertyTypes', 'amenities', 'activeAgents', 'explodedPropertyAmenities', 'multiImages', 'facilities'));
     }
 
     public function update(Request $request)
@@ -303,6 +304,37 @@ class PropertyController extends Controller
 
         $notification = [
             'message' => 'Property Multi Image Added Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()
+            ->back()
+            ->with($notification);
+    }
+
+    public function updateFacilities(Request $request)
+    {
+        $property_id = $request->facility_property_id;
+
+        if ($request->facility_name == null) {
+            return redirect()->back();
+        } else {
+            Facility::where('property_id', $property_id)->delete();
+
+            $facilities = Count($request->facility_name);
+
+            for ($i = 0; $i < $facilities; $i++) {
+                $facility = new Facility();
+
+                $facility->property_id = $property_id;
+                $facility->facility_name = $request->facility_name[$i];
+                $facility->distance = $request->distance[$i];
+                $facility->save();
+            }
+        }
+
+        $notification = [
+            'message' => 'Property Facility Updated Successfully',
             'alert-type' => 'success',
         ];
 

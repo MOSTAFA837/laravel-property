@@ -370,4 +370,58 @@ class PropertyController extends Controller
             ->back()
             ->with($notification);
     }
+
+    public function details($id)
+    {
+        $property = Property::findOrFail($id);
+
+        $propertyAmenities = $property->amenities_id;
+        $explodedPropertyAmenities = explode(',', $propertyAmenities);
+
+        $propertyTypes = PropertyType::latest()->get();
+        $amenities = Amenitie::latest()->get();
+        $facilities = Facility::where('property_id', $id)->get();
+        $activeAgents = User::where('status', 'active')
+            ->where('role', 'agent')
+            ->latest()
+            ->get();
+
+        $multiImages = MultiImg::where('property_id', $id)->get();
+
+        return view('backend.property.details', compact('property', 'propertyTypes', 'amenities', 'activeAgents', 'explodedPropertyAmenities', 'multiImages', 'facilities'));
+    }
+
+    public function inactive(Request $request)
+    {
+        $property_id = $request->id;
+        Property::findOrFail($property_id)->update([
+            'status' => 0,
+        ]);
+
+        $notification = [
+            'message' => 'Property Inactive Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()
+            ->route('all.property')
+            ->with($notification);
+    }
+
+    public function active(Request $request)
+    {
+        $property_id = $request->id;
+        Property::findOrFail($property_id)->update([
+            'status' => 1,
+        ]);
+
+        $notification = [
+            'message' => 'Property Active Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()
+            ->route('all.property')
+            ->with($notification);
+    }
 }

@@ -35,7 +35,7 @@
                                                 <img src="{{ asset($item->property_thambnail) }}"
                                                     style="width: 70px; height:40px" alt="">
                                             </td>
-                                            <td>{{ Str::limit($item->property_name, 60, '...') }}</td>
+                                            <td>{{ Str::limit($item->property_name, 50, '...') }}</td>
                                             <td>{{ $item['type']['type_name'] }}</td>
                                             <td>{{ $item->property_status }}</td>
                                             <td>{{ $item->city }}</td>
@@ -47,10 +47,20 @@
                                                 @endif
                                             </td>
                                             <td>
+                                                <a href="{{ route('property.details', $item->id) }}"
+                                                    class="btn btn-inverse-warning">
+                                                    <i data-feather="eye"></i>
+                                                </a>
+
                                                 <a href="{{ route('edit.property', $item->id) }}"
-                                                    class="btn btn-inverse-warning"> Edit </a>
+                                                    class="btn btn-inverse-warning">
+                                                    <i data-feather="edit"></i>
+                                                </a>
+
                                                 <a href="{{ route('delete.property', $item->id) }}"
-                                                    class="btn btn-inverse-danger" id="delete"> Delete </a>
+                                                    class="btn btn-inverse-danger" id="delete">
+                                                    <i data-feather="trash-2"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -83,6 +83,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/store/new/multiimage', 'storeMultiImage')->name('store.property.multiimage');
 
         Route::post('/update/facilities', 'updateFacilities')->name('update.facilities');
+
+        Route::get('/property/details/{id}', 'details')->name('property.details');
+
+        Route::post('/inactive/property', 'inactive')->name('inactive.property');
+        Route::post('/active/property', 'active')->name('active.property');
     });
 });
 
